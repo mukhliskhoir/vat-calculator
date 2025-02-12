@@ -80,7 +80,11 @@ class VatCalculatorTest extends TestCase
         $this->assertEquals(0.19, $vatCalculator->getTaxRate());
         $this->assertEquals(4.56, $vatCalculator->getTaxValue());
     }
-
+    /**
+     * 
+     *  Review By Dimas : 12-02-2025
+     *  Seharusnya untuk variabel yang tidak digunakan tidak usah di definisikan
+     */
     public function test_calculate_vat_with_predefined_rules_overwritten_by_configuration()
     {
         $net = 24.00;
@@ -682,6 +686,9 @@ class VatCalculatorTest extends TestCase
         $this->assertEquals(4.56, $vatCalculator->getTaxValue());
     }
 
+    /**
+     * 
+     */
     public function test_calculate_net_price_with_predefined_rules_overwritten_by_configuration()
     {
         $gross = 36.00;
@@ -854,7 +861,10 @@ class VatCalculatorTest extends TestCase
 
         $this->assertEquals(26.16, $result);
     }
-
+    /**
+     *  Review By : Dimas : 12-02-2025
+     *  variabel tax key tidak digunakan tapi di definisikan
+     */
     public function test_calculate_low_vat_vat_with_predefined_rules_overwritten_by_configuration()
     {
         $net = 24.00;

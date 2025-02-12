@@ -12,6 +12,13 @@ use Orchestra\Testbench\TestCase;
 
 class ValidVatNumberTest extends TestCase
 {
+
+    /**
+     *  Review By Dimas : 12-02-2025
+     *  Seharusnya untuk data test case dibuat constant variabel dan dijadikan global saja
+     *  misal 
+        $vatNumber = '098 891'; duplicate di setiap function
+     */
     protected function tearDown(): void
     {
         parent::tearDown();

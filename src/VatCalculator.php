@@ -11,6 +11,8 @@ class VatCalculator
 {
     /**
      * VAT Service check URL provided by the EU.
+     *  Review by Dimas : 12-02-2025
+     * seharusnya untuk service url bisa diletakkan di ENV File
      */
     const VAT_SERVICE_URL = 'https://ec.europa.eu/taxation_customs/vies/checkVatService.wsdl';
 
@@ -516,6 +518,11 @@ class VatCalculator
      *
      * @link https://ec.europa.eu/taxation_customs/vies/faq.html?locale=en#item_11
      */
+    /**
+     *  Review By Dimas : 12-02-2025
+     *  string literal value  banyak yang duplicate seperti \d{9}
+     * konfigurasi pattern lebih aman jika di simpan di db agar mudah di custom
+     */
     protected $patterns = [
         'AT' => 'U[A-Z\d]{8}',
         'BE' => '(0\d{9}|\d{10})',
@@ -798,6 +805,12 @@ class VatCalculator
      * @param  string|null  $type
      * @return float
      */
+
+     /**
+      *  Pada fungsi ini terdapat terdapat banyak keyword return pada setiap kondisi
+      *   seharus nya bisa di persingkat dengan hanya ada 3 return
+      * atau dibuat dalam suatu variabel dan return variabel yang sudah di assign sesuai kondisi
+      */ 
     public function getTaxRateForLocation($countryCode, $postalCode = null, $company = false, $type = null)
     {
         $countryCode = strtoupper($countryCode);
@@ -853,6 +866,11 @@ class VatCalculator
      * @param  string  $vatNumber
      * @return bool
      */
+
+     /**
+      *  Review Dimas : 12-02-2025
+      * Sebaiknya gunakan regex match untuk cek kondisi string dan replace 
+      */
     public function isValidVatNumberFormat($vatNumber)
     {
         $vatNumber = str_replace([' ', "\xC2\xA0", "\xA0", '-', '.', ','], '', trim($vatNumber));
@@ -894,6 +912,11 @@ class VatCalculator
      *
      * @throws VATCheckUnavailableException
      */
+     /**
+      *  Review By Dimas : 12-02-2025
+      * Duplicate kode untuk string replace
+      * seharusnya bisa dibuat fungsi untuk cek berdasarakn regex match dan replace
+      */
     public function getVATDetails($vatNumber)
     {
         $vatNumber = str_replace([' ', "\xC2\xA0", "\xA0", '-', '.', ','], '', trim($vatNumber));

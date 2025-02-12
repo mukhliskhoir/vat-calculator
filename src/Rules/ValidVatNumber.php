@@ -14,6 +14,11 @@ class ValidVatNumber implements Rule
      * @param  string  $attribute
      * @param  mixed  $value
      */
+
+     /** review by dimas : 12-02-2025
+      *  parameter attribute di deklarasikan tapi tidak pernah digunakan
+      
+      */
     public function passes($attribute, $value): bool
     {
         try {
